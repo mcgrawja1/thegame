@@ -99,6 +99,6 @@ describe('normalizeListing', () => {
     expect(l.attributes.color).toBe('Blue Titanium');
     expect(l.attributes.carrier).toBe('Unlocked');
     expect(l.device).toBe('Apple iPhone 15 Pro 256GB Blue Titanium Unlocked A2848');
-    expect(l.pricingNotes).toEqual(expect.arrayContaining(['Bundle', 'Refurbished', 'Third-party marketplace seller', 'Was $1199.00 (save 14%)', '+ $9.99 shipping']));
+    expect(l.pricingNotes).toEqual(expect.arrayContaining(['Bundle', 'Refurbished', 'Third-party marketplace seller', 'Was $1,199.00 (save 14%)', '+ $9.99 shipping']));
   });
 });
