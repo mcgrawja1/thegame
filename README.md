@@ -40,11 +40,51 @@ npm run build
 npm start            # http://localhost:3001
 ```
 
-Docker:
+## Deploy on a Linux server with Docker
+
+The repo ships a multi-stage `Dockerfile` (Node 22 Alpine, non-root user, health check) and a
+`docker-compose.yml`. Requirements on the server: Docker Engine with the Compose plugin
+(`docker compose version` should print a version) and git.
+
+```bash
+# 1. Get the code
+git clone https://github.com/mcgrawja1/thegame.git compshopper
+cd compshopper
+
+# 2. Configure (API keys, proxy, Micro Center store, host port)
+cp .env.example .env
+nano .env
+
+# 3. Build the image and start the container in the background
+docker compose up -d --build
+
+# 4. Check it
+docker compose ps
+docker compose logs -f compshopper
+curl http://localhost:3001/api/health
+```
+
+Open `http://<server-ip>:3001` in a browser. The container restarts automatically after a
+reboot (`restart: unless-stopped`). Set `COMPSHOPPER_PORT=8080` in `.env` to publish on a
+different host port.
+
+Day-to-day commands:
+
+```bash
+docker compose logs -f          # follow logs
+docker compose restart          # restart (e.g. after editing .env)
+docker compose down             # stop and remove the container
+git pull && docker compose up -d --build   # update to the latest code
+```
+
+To put it behind HTTPS, point a reverse proxy (Caddy, Nginx Proxy Manager, Traefik) at port
+3001 on the server; the app is a single HTTP service with no other ports.
+
+Plain Docker without Compose:
 
 ```bash
 docker build -t compshopper .
-docker run -p 3001:3001 -e BESTBUY_API_KEY=... compshopper
+docker run -d --name compshopper --restart unless-stopped -p 3001:3001 --env-file .env compshopper
 ```
 
 Tests (parsers against recorded-style fixtures, normaliser, matcher, API):
