@@ -1,0 +1,5 @@
+{"products":[
+ {"sku":6565866,"name":"Apple - iPhone 16 Pro 256GB - Desert Titanium (AT&T)","manufacturer":"Apple","modelNumber":"MYMT3LL/A","salePrice":1099.99,"regularPrice":1099.99,"onSale":false,"url":"https://api.bestbuy.com/click/-/6565866/pdp","freeShipping":true,"condition":"New","color":"Desert Titanium","onlineAvailability":true,"inStoreAvailability":true,"image":"https://pisces.bbystatic.com/1.jpg","type":"HardGood","offers":[{"text":"Save $1000 with qualified activation","type":"special_offer"}]},
+ {"sku":6565999,"name":"Apple - Geek Squad Certified Refurbished iPhone 16 Pro 128GB - Black Titanium (Unlocked)","manufacturer":"Apple","modelNumber":"GSRF MYMV3LL/A","salePrice":849.99,"regularPrice":949.99,"onSale":true,"dollarSavings":100,"url":"https://api.bestbuy.com/click/-/6565999/pdp","freeShipping":false,"shippingCost":0,"condition":"Refurbished","onlineAvailability":true,"type":"HardGood"},
+ {"sku":1,"name":"Zero price","salePrice":0,"url":"x"}
+]}
